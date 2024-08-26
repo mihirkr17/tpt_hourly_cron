@@ -10,7 +10,7 @@ module.exports.SPORTS = [
       slug: 'cricket',
       id: 62,
       siteUrl: "https://cricketpredictions.net/",
-      favLeagues: [20661, 11165, 11190, 11191, 11189, 11164, 21958, 19093, 11122]
+      favLeagues: [20661, 11165, 11190, 11191, 11189, 11164, 21958, 19093, 11122, 23261, 20427, 22591, 22835, 18833, 23167]
    },
    {
       name: 'Ice Hockey',
