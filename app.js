@@ -124,7 +124,8 @@ async function saveH2hData(event = {}, siteUrl = "https://tennispredictionstoday
 async function mainExe() {
    try {
       const HOUR_IN_SECONDS = 3600;
-      const currentUnixTime = Math.floor(Date.now() / 1000);
+      const oneHourAgoUnixTime = Math.floor(Date.now() / 1000) - HOUR_IN_SECONDS;
+
       const formattedDate = formatDate(new Date());
       // const today = new Date();
       // today.setHours(0, 0, 0, 0);
@@ -151,7 +152,7 @@ async function mainExe() {
             if (isUniqueTournament && favLeagues.includes(item?.tournament?.uniqueTournament?.id)) {
 
 
-               if (item.startTimestamp >= currentUnixTime) {
+               if (item.startTimestamp >= oneHourAgoUnixTime) {
                   finalMatches.push({ item, siteUrl: sport?.siteUrl });
                }
 
