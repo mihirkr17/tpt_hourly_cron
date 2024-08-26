@@ -119,13 +119,6 @@ async function saveH2hData(event = {}, siteUrl = "https://tennispredictionstoday
 }
 
 
-// if (item.startTimestamp > todayTimestamp) {
-//    // const preds = await fetchPredictionVotes(item.id);
-
-//    // Object.assign(item, { event_pred: preds });
-
-//    finalMatches.push({ item, siteUrl: sport?.siteUrl });
-// }
 
 
 async function mainExe() {
@@ -157,10 +150,15 @@ async function mainExe() {
 
             if (isUniqueTournament && favLeagues.includes(item?.tournament?.uniqueTournament?.id)) {
 
-               const end = item?.endTimestamp ? item?.endTimestamp : 0;
-               if (item.startTimestamp < currentUnixTime && end < currentUnixTime && end > (currentUnixTime - HOUR_IN_SECONDS)) {
+
+               if (item.startTimestamp >= currentUnixTime) {
                   finalMatches.push({ item, siteUrl: sport?.siteUrl });
                }
+
+               // const end = item?.endTimestamp ? item?.endTimestamp : 0;
+               // if (item.startTimestamp < currentUnixTime && end < currentUnixTime && end > (currentUnixTime - HOUR_IN_SECONDS)) {
+               //    finalMatches.push({ item, siteUrl: sport?.siteUrl });
+               // }
             }
          }
          console.log(`Site is : ${sport?.siteUrl}`);
