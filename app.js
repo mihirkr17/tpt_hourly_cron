@@ -125,7 +125,7 @@ async function mainExe() {
    try {
       const HOUR_IN_SECONDS = 3600;
       const currentUnixTime = Math.floor(Date.now() / 1000);
-
+      const formattedDate = formatDate(new Date());
       // const today = new Date();
       // today.setHours(0, 0, 0, 0);
       // const todayTimestamp = today.getTime() / 1000;  // Convert to Unix timestamp (seconds since epoch)
@@ -135,7 +135,7 @@ async function mainExe() {
          const sportId = sport.id;
          const sportName = sport.name;
          const favLeagues = sport.favLeagues;
-         const formattedDate = formatDate(new Date());
+
 
          console.log(`Fetching data for ${sportName} on ${formattedDate}`);
 
