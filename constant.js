@@ -31,7 +31,7 @@ module.exports.SPORTS = [
       slug: 'american-football',
       id: 63,
       siteUrl: "https://nflpredictionstoday.com/",
-      favLeagues: [9464, 9465, 19857, 22021, 19858, 19958, 17016, 11443, 11208, 11528, 22425]
+      favLeagues: [9464, 9465, 19857, 22021, 19858, 19958, 17016, 11443, 11208, 11528, 22425, 19510, 19883]
    },
    {
       name: 'Table Tennis',
