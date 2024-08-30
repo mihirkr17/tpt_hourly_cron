@@ -178,18 +178,28 @@ async function mainExe() {
          console.log(`Site is : ${sport?.siteUrl}`);
          console.log(`Got total ${finalMatches.length} final matches.`);
 
-         let chunk = 10;
-         for (let i = 0; i < finalMatches.length; i += chunk) {
-            let chunks = finalMatches.slice(i, i + chunk);
-   
-   
-            const InsertToDB = chunks && chunks.map(async (match) => {
+         if (finalMatches.length <= 10) {
+            const InsertToDB = finalMatches && finalMatches.map(async (match) => {
                const result = await saveH2hData(match.item, match?.siteUrl);
                console.log(result);
             });
-   
+
             await Promise.all(InsertToDB);
             await new Promise(resolve => setTimeout(resolve, 2000));
+         } else {
+            let chunk = 10;
+            for (let i = 0; i < finalMatches.length; i += chunk) {
+               let chunks = finalMatches.slice(i, i + chunk);
+
+
+               const InsertToDB = chunks && chunks.map(async (match) => {
+                  const result = await saveH2hData(match.item, match?.siteUrl);
+                  console.log(result);
+               });
+
+               await Promise.all(InsertToDB);
+               await new Promise(resolve => setTimeout(resolve, 2000));
+            }
          }
       }
 
