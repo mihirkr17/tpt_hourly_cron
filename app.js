@@ -192,6 +192,7 @@ async function mainExe() {
          await new Promise(resolve => setTimeout(resolve, 2000));
       }
 
+      console.log("Operation done.");
       process.exit(0);
    } catch (error) {
       console.log(`Error: ${error?.message}`);
