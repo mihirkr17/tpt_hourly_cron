@@ -58,7 +58,7 @@ function formatDateByUtc(timestamp) {
 }
 
 async function fetchSportsDataBySportId(sportId, date) {
-   const MAX_RETRIES = 10;
+   const MAX_RETRIES = 100;
    let retry = 0;
    while (retry < MAX_RETRIES) {
       try {
@@ -141,14 +141,14 @@ async function mainExe() {
       // const today = new Date();
       // today.setHours(0, 0, 0, 0);
       // const todayTimestamp = today.getTime() / 1000;  // Convert to Unix timestamp (seconds since epoch)
-      const finalMatches = [];
+
 
 
       for (const sport of SPORTS.filter(e => e.siteUrl)) {
          const sportId = sport.id;
          const sportName = sport.name;
          const favLeagues = sport.favLeagues;
-
+         const finalMatches = [];
 
          console.log(`Fetching data for ${sportName} on ${formattedDate}`);
 
@@ -173,24 +173,41 @@ async function mainExe() {
                // }
             }
          }
+
+
          console.log(`Site is : ${sport?.siteUrl}`);
+         console.log(`Got total ${finalMatches.length} final matches.`);
+
+         let chunk = 10;
+         for (let i = 0; i < finalMatches.length; i += chunk) {
+            let chunks = finalMatches.slice(i, i + chunk);
+   
+   
+            const InsertToDB = chunks && chunks.map(async (match) => {
+               const result = await saveH2hData(match.item, match?.siteUrl);
+               console.log(result);
+            });
+   
+            await Promise.all(InsertToDB);
+            await new Promise(resolve => setTimeout(resolve, 2000));
+         }
       }
 
-      console.log(`Got total ${finalMatches.length} final matches.`);
+      // console.log(`Got total ${finalMatches.length} final matches.`);
 
-      let chunk = 10;
-      for (let i = 0; i < finalMatches.length; i += chunk) {
-         let chunks = finalMatches.slice(i, i + chunk);
+      // let chunk = 10;
+      // for (let i = 0; i < finalMatches.length; i += chunk) {
+      //    let chunks = finalMatches.slice(i, i + chunk);
 
 
-         const InsertToDB = chunks && chunks.map(async (match) => {
-            const result = await saveH2hData(match.item, match?.siteUrl);
-            console.log(result);
-         });
+      //    const InsertToDB = chunks && chunks.map(async (match) => {
+      //       const result = await saveH2hData(match.item, match?.siteUrl);
+      //       console.log(result);
+      //    });
 
-         await Promise.all(InsertToDB);
-         await new Promise(resolve => setTimeout(resolve, 2000));
-      }
+      //    await Promise.all(InsertToDB);
+      //    await new Promise(resolve => setTimeout(resolve, 2000));
+      // }
 
       console.log("Operation done.");
       process.exit(0);
