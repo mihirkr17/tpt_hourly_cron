@@ -78,7 +78,7 @@ module.exports.SPORTS = [
       slug: 'football',
       id: 1,
       siteUrl: "https://soccerpredictionstoday.org/",
-      favLeagues: [7, 679, 16, 17, 8, 35, 23, 34, 384, 325, 679, 17015, 436, 437]
+      favLeagues: [7, 679, 16, 17, 8, 35, 23, 34, 384, 325, 679, 17015, 436, 437, 390, 308, 10783]
    },
    {
       name: 'Tennis',
