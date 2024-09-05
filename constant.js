@@ -18,7 +18,7 @@ module.exports.SPORTS = [
       slug: 'ice-hockey',
       id: 4,
       siteUrl: "https://nhlpredictionstoday.com/",
-      favLeagues: [3, 234, 268, 225, 134, 261, 919]
+      favLeagues: [3, 234, 268, 225, 134, 261, 919, 494]
    },
    {
       name: 'Baseball',
