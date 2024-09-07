@@ -4,6 +4,12 @@ const { SPORTS } = require("./constant");
 const SOFASCORE = "https://matchstat.com/sofaapi";
 
 
+const utcTimestampInSeconds = Math.floor(new Date().getTime() / 1000);
+console.log(utcTimestampInSeconds); 
+
+
+return;
+
 function getPredPerc(votes) {
    if (votes.vote1 !== undefined) {
       votes.vote1 = votes.vote1 + Math.floor(Math.random() * (votes.vote1 * 0.05 - votes.vote1 * 0.01 + 1)) + votes.vote1 * 0.01;
