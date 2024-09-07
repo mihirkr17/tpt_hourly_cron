@@ -115,20 +115,30 @@ async function fetchPredictionVotes(eventId) {
 
 //  Insert data to database
 async function saveH2hData(event = {}, siteUrl = "https://tennispredictionstoday.org/") {
-   try {
-      const wpPostUri = `${siteUrl}wp-json/wp-h2h-info/v1/add-data`;
-      const response = await fetch(`${wpPostUri}?${Math.floor(Math.random() * 9e10) + 1e10}`, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify(event)
-      });
+   let retry = 0;
+   const MAX_RETRIES = 20;
+   while (retry < MAX_RETRIES) {
+      try {
+         const wpPostUri = `${siteUrl}wp-json/wp-h2h-info/v1/add-data`;
+         const response = await fetch(`${wpPostUri}?${Math.floor(Math.random() * 9e10) + 1e10}`, {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(event)
+         });
 
-      return response.json();
-   } catch (error) {
-      throw error;
+         return response.json();
+      } catch (error) {
+         console.log(`Error Is: ${error?.message}`);
+
+         await new Promise((resolve) => setTimeout(resolve, 3000));
+
+         retry++;
+      }
    }
+
+   throw new Error("Max retry limit in saveH2hData.");
 }
 
 
