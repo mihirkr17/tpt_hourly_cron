@@ -5,10 +5,7 @@ const SOFASCORE = "https://matchstat.com/sofaapi";
 
 
 const utcTimestampInSeconds = Math.floor(new Date().getTime() / 1000);
-console.log(utcTimestampInSeconds); 
 
-
-return;
 
 function getPredPerc(votes) {
    if (votes.vote1 !== undefined) {
@@ -169,7 +166,9 @@ async function mainExe() {
 
             if (isUniqueTournament && favLeagues.includes(item?.tournament?.uniqueTournament?.id)) {
 
-               if ((formatDateByUtc(item.startTimestamp) == formattedDate)) {
+               //(formatDateByUtc(item.startTimestamp) == formattedDate)
+               //item?.startTimestamp >= utcTimestampInSeconds
+               if (!item?.winnerCode) {
                   finalMatches.push({ item, siteUrl: sport?.siteUrl });
                }
 
