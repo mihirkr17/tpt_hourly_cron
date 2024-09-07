@@ -196,7 +196,7 @@ async function mainExe() {
          if (finalMatches.length <= 10) {
             const InsertToDB = finalMatches && finalMatches.map(async (match) => {
                const result = await saveH2hData(match.item, match?.siteUrl);
-               console.log(result);
+               console.log(result.data);
             });
 
             await Promise.all(InsertToDB);
@@ -209,7 +209,7 @@ async function mainExe() {
 
                const InsertToDB = chunks && chunks.map(async (match) => {
                   const result = await saveH2hData(match.item, match?.siteUrl);
-                  console.log(result);
+                  console.log(result.data);
                });
 
                await Promise.all(InsertToDB);
