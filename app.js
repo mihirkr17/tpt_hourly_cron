@@ -116,7 +116,7 @@ async function fetchPredictionVotes(eventId) {
 //  Insert data to database
 async function saveH2hData(event = {}, siteUrl = "https://tennispredictionstoday.org/") {
    try {
-      const wpPostUri = `${siteUrl}/wp-json/wp-h2h-info/v1/add-data`;
+      const wpPostUri = `${siteUrl}wp-json/wp-h2h-info/v1/add-data`;
       const response = await fetch(`${wpPostUri}?${Math.floor(Math.random() * 9e10) + 1e10}`, {
          method: "POST",
          headers: {
