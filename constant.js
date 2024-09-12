@@ -52,7 +52,7 @@ module.exports.SPORTS = [
       slug: 'american-football',
       id: 63,
       siteUrl: "https://nflpredictionstoday.com/",
-      favLeagues: [9464,  9465, 19510, 22021, 19858, 11208, 17016, 19958]
+      favLeagues: [9464, 9465, 19510, 22021, 19858, 11208, 17016, 19958]
    },
    {
       name: 'Table Tennis',
@@ -91,7 +91,7 @@ module.exports.SPORTS = [
       slug: 'basketball',
       id: 2,
       siteUrl: "https://nbapredictionstoday.com/",
-      favLeagues: [132, 138, 441, 304, 262, 264, 1562, 141, 235, 227, 519, 1438, 156, 975,  1566, 2339, 1524]
+      favLeagues: [132, 138, 441, 304, 262, 264, 1562, 141, 235, 227, 519, 1438, 156, 975, 1566, 2339, 1524]
    },
    {
       name: 'Football',
@@ -99,33 +99,33 @@ module.exports.SPORTS = [
       id: 1,
       siteUrl: "https://soccerpredictionstoday.org/",
       favLeagues: [
-			7,
-			679,
-			16,
-			17,
-			8,
-			23,
-			53,
-			35,
-			34,
-			182,
-			238,
-			18,
-			39,
-			54,
-			325,
-			11621,
-			203,
-			242,
-			215,
-			37,
-			52,
-			155,
-			38,
-			44,
-			202,
-			36
-		]
+         7,
+         679,
+         16,
+         17,
+         8,
+         23,
+         53,
+         35,
+         34,
+         182,
+         238,
+         18,
+         39,
+         54,
+         325,
+         11621,
+         203,
+         242,
+         215,
+         37,
+         52,
+         155,
+         38,
+         44,
+         202,
+         36
+      ]
    },
    {
       name: 'Tennis',
